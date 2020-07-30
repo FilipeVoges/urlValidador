@@ -7,12 +7,14 @@
 <title>{{config('app.name')}} - @yield('title')</title>
 
 
-<link href="{{url('/plugins/bootstrap/css/bootstrap.min.css?v=')}}{{env('APP_VERSAO')}}" rel="stylesheet">
+<link href="{{url('/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 <link href="{{url('/css/app.css?v=')}}{{env('APP_VERSAO')}}" rel="stylesheet">
-<link href="{{url('/plugins/fontawesome/css/all.min.css?v=')}}{{env('APP_VERSAO')}}" rel="stylesheet">
+<link href="{{url('/plugins/fontawesome/css/all.min.css')}}" rel="stylesheet">
+<link href="{{url('/plugins/dataTables/jquery.dataTables.css')}}" rel="stylesheet">
 
-<link href=" {{url('/plugins/fontawesome/js/all.min.js?v=')}}{{env('APP_VERSAO')}}" rel="stylesheet">
-<script src="{{url('/plugins/jquery/jquery-3.3.1.min.js?v=')}}{{env('APP_VERSAO')}}"></script>
-<script src="{{url('/plugins/jquery-mask/jquery.mask.js?v=')}}{{env('APP_VERSAO')}}"></script>
-<script src="{{url('/plugins/bootstrap/js/bootstrap.min.js?v=')}}{{env('APP_VERSAO')}}"></script>
+<link href=" {{url('/plugins/fontawesome/js/all.min.js')}}" rel="stylesheet">
+<script src="{{url('/plugins/jquery/jquery-3.3.1.min.js')}}"></script>
+<script src="{{url('/plugins/jquery-mask/jquery.mask.js')}}"></script>
+<script src="{{url('/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{url('/plugins/dataTables/jquery.dataTables.js')}}"></script>
 @yield('styles')

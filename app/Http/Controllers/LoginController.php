@@ -50,11 +50,14 @@ class LoginController extends Controller
             return $this->login(['Wrong password']);
         }
 
-        session(['user' => $user->toArray()]);
+        session(['user' => $user]);
 
         return redirect('');
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function logout() {
         session()->forget('user');
         return redirect('');
