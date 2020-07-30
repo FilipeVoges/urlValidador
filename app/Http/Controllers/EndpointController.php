@@ -81,4 +81,19 @@ class EndpointController extends Controller
         return redirect('/');
 
     }
+
+    public function see(int $id) {
+        $endpoint = Endpoint::find($id);
+
+        if(!$endpoint) {
+            session(['message_error' => 'Endpoint not found']);
+            return redirect('/');
+        }
+
+        $dados = [
+            'body' => $endpoint-> http_body
+        ];
+
+        return view('response', $dados);
+    }
 }
