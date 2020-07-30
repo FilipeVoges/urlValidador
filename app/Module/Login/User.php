@@ -9,4 +9,9 @@ class User extends Model
     protected $table = 'users';
 
     protected $hidden = ['password'];
+
+    public function endpoints(){
+        return $this->hasMany('App\Module\Validador\Endpoint');
+    }
+
 }
