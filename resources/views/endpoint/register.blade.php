@@ -13,7 +13,7 @@
                 <div class="fadeIn third">
                     @foreach ($errors as $error)
                         <div class="alert alert-danger alert-dismissible" role="alert">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <button type="button" class="close" data-dismiss="alert" title="Excluir">&times;</button>
                             {{$error}}
                         </div>
                     @endforeach

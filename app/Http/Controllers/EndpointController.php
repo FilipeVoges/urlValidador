@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Module\Validador\Endpoint;
-use Illuminate\Support\Facades\Validator;
 use App\Module\Login\User;
 
 /**
@@ -17,17 +16,22 @@ use App\Module\Login\User;
 class EndpointController extends Controller
 {
     /**
-     * @param string|null $message
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function init(string $message = null) {
+    public function init() {
         $user = session('user');
-
         $dados = [
-            'endpoints' => $user->endpoints,
-            'message' => $message
+            'endpoints' => $user->endpoints()->get(),
         ];
 
+        if(session()->has('message_success')) {
+            $dados['message_success'] = session('message_success');
+            session()->forget('message_success');
+        }
+        if(session()->has('message_error')) {
+            $dados['message_error'] = session('message_error');
+            session()->forget('message_error');
+        }
         return view('home', $dados);
     }
 
@@ -48,16 +52,33 @@ class EndpointController extends Controller
             $endpoint = new Endpoint();
 
             $user = session('user');
-            $endpoint->user = $user;
+            $endpoint->user_id = $user->id;
             $endpoint->endpoint = $this->request->input('endpoint');
 
             if($endpoint->save()) {
-                return $this->init('URL successfully registered');
+                session(['message_success' => 'URL successfully registered']);
+                return redirect('/');
             }
 
             return $this->register(['An error has occurred']);
         }catch (\Exception $e) {
             return $this->register([$e->getMessage()]);
         }
+    }
+
+    public function delete(int $id) {
+        $endpoint = Endpoint::find($id);
+
+        if(!$endpoint) {
+            session(['message_error' => 'Endpoint not found']);
+            return redirect('/');
+        }
+
+        if($endpoint->delete()) {
+            session(['message_success' => 'Endpoint has been wiped out of the database']);
+        }
+
+        return redirect('/');
+
     }
 }
