@@ -4,6 +4,7 @@ Route::get('autenticar', function () {
     return redirect('/');
 });
 
+Route::get('roboDaInterwebs', 'QueueController@run');
 Route::get('login', 'LoginController@login');
 Route::post('autenticar', 'LoginController@autenticar');
 
