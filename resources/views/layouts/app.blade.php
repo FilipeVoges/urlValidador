@@ -4,9 +4,6 @@
         @include('layouts.head')
     </head>
     <body>
-        @if (isset($sidebar) && $sidebar)
-            @include('layouts.nav')
-        @endif
 
         <div id="app">
             <main >

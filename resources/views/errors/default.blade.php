@@ -2,12 +2,6 @@
 
 @section('title', $code . ' ' . $message)
 
-@if (isset($sidebar) && $sidebar)
-    @section('sidebar')
-        @parent
-    @endsection
-@endif
-
 @section('content')
     <div class="card card-login mx-auto text-center bg-white">
         <div class="card-header mx-auto bg-white">

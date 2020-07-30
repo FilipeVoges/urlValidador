@@ -148,5 +148,26 @@ if (!function_exists('validaCPF')){
     }
 }
 
+if (!function_exists('isUrl')){
+    /**
+     * Verifica se uma String é uma URL
+     *
+     * @param string $url
+     * @return bool
+     *
+     * @author Filipe Voges <filipe.vogesh@gmail.com>
+     * @since 2019-04-08
+     */
+    function isUrl($url = ''){
+        if(empty($url)) return false;
+
+        $pattern = '/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:\/?#[\]@!\$&\'\(\)\*\+,;=.]+$/';
+
+        preg_match($pattern, $url, $result);
+
+        return !empty($result);
+    }
+}
+
 
 

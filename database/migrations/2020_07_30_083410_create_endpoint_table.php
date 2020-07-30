@@ -16,6 +16,7 @@ class CreateEndpointTable extends Migration
         Schema::create('endpoints', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id')->index();
+            $table->string('endpoint');
             $table->integer('http_code');
             $table->longText('http_body');
             $table->boolean('checked');

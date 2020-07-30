@@ -1,28 +1,35 @@
 @extends('layouts.app')
 
-@if (isset($sidebar) && $sidebar)
-    @section('sidebar')
-        @parent
-    @endsection
-@endif
-
 @section('content')
-    <table id="table_id" class="display">
-        <thead>
-        <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-        </tr>
-        <tr>
-            <td>Row 2 Data 1</td>
-            <td>Row 2 Data 2</td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="card">
+        <div class="card-body">
+            <table id="table_id" class="display">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Checked</th>
+                        <th>Checked at</th>
+                        <th>Response Code</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($endpoints as $endpoint)
+                        <tr>
+                            <td>{{$endpoint->id}}</td>
+                            <td>{{$endpoint->checked}}</td>
+                            <td>{{$endpoint->checked_at}}</td>
+                            <td>{{$endpoint->http_code}}</td>
+                            <td>{{$endpoint->http_code}}</td>
+                            <td>Actions</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <div>
+                <a role="button" class="btn btn-outline-primary btn-lg" href="{{url('register')}}">Register</a>
+            </div>
+        </div>
+    </div>
+
 @endsection
